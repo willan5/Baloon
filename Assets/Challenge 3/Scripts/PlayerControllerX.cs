@@ -59,13 +59,14 @@ public class PlayerControllerX : MonoBehaviour
             explosionParticle.Play();
             playerAudio.PlayOneShot(explodeSound, 1.0f);
             gameOver = true;
-            Debug.Log("Game Over!");
+            
 
             //stop the spinning and rotation if game over
-            playerRb.velocity = Vector3.zero;
-            playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-            playerRb.angularVelocity = Vector3.zero;
+           // playerRb.velocity = Vector3.zero;
+           // playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+            //playerRb.angularVelocity = Vector3.zero;
 
+            Debug.Log("Game Over!");
             Destroy(other.gameObject);
 
 
@@ -82,7 +83,7 @@ public class PlayerControllerX : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Ground"))
         {
-            //stop the bounce sound if game is over
+            //Keep playing the bouncesound only if game is playing
             if (!gameOver)
             {
                 playerAudio.PlayOneShot(baloonBounceSound, 1.0f);
